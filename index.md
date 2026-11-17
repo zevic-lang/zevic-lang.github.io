@@ -21,14 +21,11 @@ description: Zevic は、C のコードをそのまま使える、小さくて�
 
 <section class="block">
   <div class="wrap example">
-    <div markdown="1">
-
-```zevic
-module Main
+    <div class="highlighter-rouge language-zevic"><div class="highlight"><pre class="highlight"><code>module Main
 
 import Zevic.Console
 
-fn FizzBuzz(n: I32) -> String {
+fn FizzBuzz(n: I32) -&gt; String {
     if (n % 15 == 0) {
         "FizzBuzz"
     } else if (n % 3 == 0) {
@@ -44,10 +41,7 @@ fn Main() {
     for (i in 1..=20) {
         Console.Println(FizzBuzz(i))
     }
-}
-```
-
-    </div>
+}</code></pre></div></div>
     <div>
       <h2>コンパイルして実行</h2>
       <div class="highlighter-rouge language-sh"><div class="highlight"><pre class="highlight"><code>zevic fizzbuzz.zev -o fizzbuzz
