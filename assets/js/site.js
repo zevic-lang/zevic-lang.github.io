@@ -64,6 +64,7 @@
   // ---- wide tables scroll inside their own box ----
   doc.querySelectorAll(".prose table").forEach(function (t) {
     var w = doc.createElement("div"); w.className = "table-wrap";
+    if (t.rows[0] && t.rows[0].cells.length > 2) t.classList.add("wide");
     t.parentNode.insertBefore(w, t); w.appendChild(t);
   });
 
