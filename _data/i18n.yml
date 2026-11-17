@@ -1,0 +1,38 @@
+ja:
+  skip: 本文へ
+  menu: メニュー
+  theme: 明暗
+  theme_title: テーマ切り替え
+  home_url: /
+  alt_home: /en/
+  lang_name: English
+  lang_label: English version
+  date_fmt: "%Y年%-m月%-d日"
+  back_blog: "← ブログ"
+  license: Apache-2.0 ライセンス
+  archived: アーカイブ
+  feed: フィード
+  spec: 言語仕様
+  latest_news: 最新のお知らせ
+  all_posts: ブログをすべて見る →
+  feed_atom: Atom フィード
+  tagline: C のコードをそのまま使える、小さくて書きやすいネイティブ言語
+en:
+  skip: Skip to content
+  menu: Menu
+  theme: Theme
+  theme_title: Toggle theme
+  home_url: /en/
+  alt_home: /
+  lang_name: 日本語
+  lang_label: 日本語版
+  date_fmt: "%B %-d, %Y"
+  back_blog: "← Blog"
+  license: Apache-2.0 licensed
+  archived: archived
+  feed: Feed
+  spec: Language spec
+  latest_news: Latest news
+  all_posts: All posts →
+  feed_atom: Atom feed
+  tagline: A small, easy-to-write native language that uses C code as it is

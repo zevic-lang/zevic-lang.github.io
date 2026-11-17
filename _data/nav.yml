@@ -1,7 +1,16 @@
-- { title: 概要, url: /about/ }
-- { title: インストール, url: /install/ }
-- { title: 入門, url: /start/ }
-- { title: 他言語から, url: /from-other-languages/ }
-- { title: リリース, url: /releases/ }
-- { title: ブログ, url: /blog/ }
-- { title: 開発者, url: /developers/ }
+ja:
+  - { title: 概要, url: /about/ }
+  - { title: インストール, url: /install/ }
+  - { title: 入門, url: /start/ }
+  - { title: 他言語から, url: /from-other-languages/ }
+  - { title: リリース, url: /releases/ }
+  - { title: ブログ, url: /blog/ }
+  - { title: 開発者, url: /developers/ }
+en:
+  - { title: About, url: /en/about/ }
+  - { title: Install, url: /en/install/ }
+  - { title: Tutorial, url: /en/start/ }
+  - { title: From other languages, url: /en/from-other-languages/ }
+  - { title: Releases, url: /en/releases/ }
+  - { title: Blog, url: /en/blog/ }
+  - { title: Developers, url: /en/developers/ }
