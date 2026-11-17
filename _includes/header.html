@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="/"><img src="/assets/img/icon-192.png" alt="" width="36" height="36"><span>Zevic</span></a>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="nav">☰</button>
+    <nav id="nav" class="nav">
+      {% for item in site.data.nav %}
+      <a href="{{ item.url }}"{% if page.url contains item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+      <a class="ext" href="{{ site.repo }}">GitHub</a>
+      <button class="theme-toggle" aria-label="テーマ切り替え" title="テーマ切り替え">◐</button>
+    </nav>
+  </div>
+</header>

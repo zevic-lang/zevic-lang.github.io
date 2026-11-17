@@ -1,0 +1,38 @@
+title: Zevic
+tagline: C のコードをそのまま使える、小さくて書きやすいネイティブ言語
+description: Zevic は、ソースコードをテキストの LLVM IR に変換し、clang で機械語にする、小さくて書きやすいネイティブ言語です。
+lang: ja
+url: "https://zevic-lang.github.io"
+baseurl: ""
+logo: /assets/img/logo.png
+
+github_org: https://github.com/zevic-lang
+repo: https://github.com/zevic-lang/zevic
+version: "0.4.5"
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+permalink: /blog/:year/:month/:day/:title/
+timezone: Asia/Tokyo
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { layout: page }
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
