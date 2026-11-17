@@ -1,0 +1,42 @@
+- version: "0.4.5"
+  date: 2026-11-16
+  summary: Termux など書き込み可能な /tmp が無い環境に対応。ビルド成果物の名前を整理。
+  changes:
+    - "Termux など書き込み可能な <code>/tmp</code> が無い環境で、プロセスの出力を <code>$TMPDIR</code>（無ければ <code>/tmp</code>）に書くようにしました。以前はそこで外部プロセス呼び出しがすべて失敗し、clang が見つからないと報告されていました"
+    - "ローカルビルドの <code>make</code> は <code>build/zevpm</code> を作ります。内部用のシードコンパイラは <code>build/bootstrap/zevic</code> に移りました"
+- version: "0.4.4"
+  date: 2026-11-16
+  summary: Windows のスレッドと GC の修正、既定の最適化を -O0 に。
+  changes:
+    - "Windows: <code>Thread.Spawn</code>（と <code>Async.Spawn</code>）で起動したスレッドが Boehm GC に登録され、安全にメモリ確保・回収できます"
+    - "<code>zevic</code> と <code>zevpm</code> は既定で <code>-O0</code> でビルドします（開発中の高速ビルド）。<code>zevpm build --release</code> は <code>-O2</code>、<code>zevic -O2</code> で明示的に有効にできます"
+- version: "0.4.3"
+  date: 2026-11-15
+  summary: Comparable / Equatable を実装した型で比較演算子が使えるように。
+  changes:
+    - "<code>Comparable</code> を実装した struct / class で <code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> が使え、<code>Compare</code> メソッドを呼びます"
+    - "<code>Equatable</code> を実装した struct の <code>==</code> は <code>Equals</code> を呼びます（以前はフィールドを比較していました）"
+    - "<code>Async.Spawn</code> はデタッチされた <code>Thread.Thread</code> でタスクを開始します"
+- version: "0.4.2"
+  date: 2026-11-15
+  summary: スレッドと多倍長整数、仕様書を実装に合わせて更新。
+  changes:
+    - "<code>Zevic.Thread</code>: OS スレッド。<code>Thread.Spawn(f)</code> で起動し、<code>Join()</code> で待ちます"
+    - "<code>Zevic.BigInt</code>: 任意精度の整数。四則演算、<code>Pow</code>、<code>Parse</code>、<code>ToString</code> など"
+    - "言語仕様書を実装に合わせて更新しました"
+- version: "0.4.1"
+  date: 2026-11-12
+  summary: 標準ライブラリの大幅な拡充と、他言語との連携例。
+  changes:
+    - "<code>Text.Format</code>、<code>StringBuilder</code>、<code>Iterable</code> / <code>Array</code> / <code>Map</code> / <code>Set</code> の多数のメソッド"
+    - "新モジュール: <code>Regex</code> <code>Csv</code> <code>Toml</code> <code>DateTime</code> <code>Log</code> <code>Cli</code> <code>Net</code> <code>Zip</code> <code>Tar</code> <code>Gzip</code> <code>Digest</code> <code>Encoding</code> ほか"
+    - "C 実装（zevic0）は <a href=\"https://github.com/zevic-lang/zevic-c\">zevic-lang/zevic-c</a> に分離しました。リポジトリは clang だけでビルドできます"
+    - "C++ / Rust / Go / Python から Zevic ライブラリを呼ぶ例と、Zevic から Rust / C++ を呼ぶ例"
+- version: "0.4.0"
+  date: ""
+  summary: セルフホスト。コンパイラが Zevic 自身で書かれました。
+  changes:
+    - "<code>zevic1</code>（約 13,000 行の Zevic）が C 実装を完全に置き換えました。99 個のゴールデンテストがすべて通ります"
+    - "ブートストラップ: zevic → zevic1 → zevic2 → zevic3 がバイト単位で同一の LLVM IR を出力します"
+    - "共用体型 <code>A | B</code>、<code>x is T</code>、<code>match</code> の型パターン"
+    - "標準ライブラリが <code>Zevic</code> パッケージになりました"
