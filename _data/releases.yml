@@ -5,6 +5,10 @@
   - Termux など書き込み可能な <code>/tmp</code> が無い環境で、プロセスの出力を <code>$TMPDIR</code>（無ければ <code>/tmp</code>）に書くようにしました。以前はそこで外部プロセス呼び出しがすべて失敗し、clang が見つからないと報告されていました
   - ローカルビルドの <code>make</code> は <code>build/zevpm</code> を作ります。内部用のシードコンパイラは <code>build/bootstrap/zevic</code> に移りました
   release: true
+  summary_en: Works where there is no writable /tmp, such as Termux. Build output names tidied up.
+  changes_en:
+  - On systems without a writable <code>/tmp</code> (Termux and others) the compiler now writes process output under <code>$TMPDIR</code>, falling back to <code>/tmp</code>. Before, every process call failed there and clang was reported as not found
+  - 'Local builds: <code>make</code> produces <code>build/zevpm</code>. The internal seed compiler moved to <code>build/bootstrap/zevic</code>'
 - version: 0.4.4
   date: 2026-11-16
   summary: Windows のスレッドと GC の修正、既定の最適化を -O0 に。
@@ -12,6 +16,10 @@
   - 'Windows: <code>Thread.Spawn</code>（と <code>Async.Spawn</code>）で起動したスレッドが Boehm GC に登録され、安全にメモリ確保・回収できます'
   - <code>zevic</code> と <code>zevpm</code> は既定で <code>-O0</code> でビルドします（開発中の高速ビルド）。<code>zevpm build --release</code> は <code>-O2</code>、<code>zevic -O2</code> で明示的に有効にできます
   release: true
+  summary_en: Windows threads and the GC; the default optimisation level is now -O0.
+  changes_en:
+  - 'Windows: threads started by <code>Thread.Spawn</code> (and <code>Async.Spawn</code>) register with the Boehm GC, so they can allocate and be collected safely'
+  - <code>zevic</code> and <code>zevpm</code> build with <code>-O0</code> by default (fast builds for development). <code>zevpm build --release</code> keeps <code>-O2</code>; <code>zevic -O2</code> opts in explicitly
 - version: 0.4.3
   date: 2026-11-16
   summary: Comparable / Equatable を実装した型で比較演算子が使えるように。
@@ -20,6 +28,11 @@
   - <code>Equatable</code> を実装した struct の <code>==</code> は <code>Equals</code> を呼びます（以前はフィールドを比較していました）
   - <code>Async.Spawn</code> はデタッチされた <code>Thread.Thread</code> でタスクを開始します
   release: true
+  summary_en: Comparison operators on types that implement Comparable / Equatable.
+  changes_en:
+  - '<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code> and <code>&gt;=</code> work on a struct or class that implements <code>Comparable</code>: they call its <code>Compare</code> method'
+  - <code>==</code> on a struct that implements <code>Equatable</code> calls its <code>Equals</code> method (it used to compare the fields)
+  - <code>Async.Spawn</code> now starts its task on a detached <code>Thread.Thread</code>
 - version: 0.4.2
   date: 2026-11-15
   summary: スレッドと多倍長整数、仕様書を実装に合わせて更新。
@@ -28,6 +41,11 @@
   - '<code>Zevic.BigInt</code>: 任意精度の整数。四則演算、<code>Pow</code>、<code>Parse</code>、<code>ToString</code> など'
   - 言語仕様書を実装に合わせて更新しました
   release: true
+  summary_en: Threads and arbitrary-precision integers; the specification brought up to date.
+  changes_en:
+  - '<code>Zevic.Thread</code>: OS threads. <code>Thread.Spawn(f)</code> starts a function on a new thread; <code>Join()</code> waits for it'
+  - '<code>Zevic.BigInt</code>: integers of any size. Arithmetic, <code>Pow</code>, <code>Parse</code>, <code>ToString</code> and more'
+  - The language specification now matches the implementation
 - version: 0.4.1
   date: 2026-11-12
   summary: 標準ライブラリの大幅な拡充と、他言語との連携例。
@@ -37,6 +55,12 @@
   - C 実装（zevic0）は <a href="https://github.com/zevic-lang/zevic-c">zevic-lang/zevic-c</a> に分離しました。リポジトリは clang だけでビルドできます
   - C++ / Rust / Go / Python から Zevic ライブラリを呼ぶ例と、Zevic から Rust / C++ を呼ぶ例
   release: true
+  summary_en: A much larger standard library, and examples for other languages.
+  changes_en:
+  - <code>Text.Format</code>, <code>StringBuilder</code>, and many methods on <code>Iterable</code>, <code>Array</code>, <code>Map</code> and <code>Set</code>
+  - 'New modules: <code>Regex</code> <code>Csv</code> <code>Toml</code> <code>DateTime</code> <code>Log</code> <code>Cli</code> <code>Net</code> <code>Zip</code> <code>Tar</code> <code>Gzip</code> <code>Digest</code> <code>Encoding</code> and more'
+  - The C implementation (zevic0) moved to <a href="https://github.com/zevic-lang/zevic-c">zevic-lang/zevic-c</a>. The repository builds with clang alone
+  - Examples of C++, Rust, Go and Python calling a Zevic library, and of Zevic calling Rust and C++
 - version: 0.4.0
   date: 2026-11-08
   summary: セルフホスト。コンパイラが Zevic 自身で書かれました。
@@ -46,6 +70,12 @@
   - 共用体型 <code>A | B</code>、<code>x is T</code>、<code>match</code> の型パターン
   - 標準ライブラリが <code>Zevic</code> パッケージになりました
   release: false
+  summary_en: 'Self-hosting: the compiler is written in Zevic.'
+  changes_en:
+  - <code>zevic1</code> (about 13,000 lines of Zevic) fully replaces the C implementation. All 99 golden tests pass
+  - 'Bootstrap: zevic, then zevic1, zevic2 and zevic3 all write byte-identical LLVM IR'
+  - Union types <code>A | B</code>, <code>x is T</code>, type patterns in <code>match</code>
+  - The standard library became the <code>Zevic</code> package
 - version: 0.3.1
   date: 2026-11-04
   summary: zevfmt、ループラベル、async、HTTP、Random、Json。
@@ -57,6 +87,14 @@
   - <code>Zevic.Random</code>（SplitMix64）と <code>Zevic.Json</code>（RFC 8259、行・列つきのエラー）
   - 初期の CI で見つかった macOS / Windows の不具合を多数修正
   release: false
+  summary_en: zevfmt, loop labels, async, HTTP, Random and Json.
+  changes_en:
+  - '<code>zevfmt</code>: a code formatter (<code>-w</code> rewrites, <code>-check</code> verifies). <code>zevpm</code> was rewritten in Zevic'
+  - 'Loop labels: <code>outer@ for (...) { break@outer }</code>'
+  - <code>async { ... }</code> and <code>await</code>, with <code>Zevic.Async</code> (<code>Task</code> <code>Spawn</code> <code>Channel</code> <code>Mutex</code>)
+  - <code>Zevic.Http</code> (<code>Get</code> <code>Post</code> <code>Send</code> <code>Listen</code>; no TLS)
+  - <code>Zevic.Random</code> (SplitMix64) and <code>Zevic.Json</code> (RFC 8259, errors with line and column)
+  - Many macOS and Windows fixes found by the first CI runs
 - version: 0.3.0
   date: 2026-11-02
   summary: パッケージマネージャ zevpm とテスト、標準ライブラリの第 2 層。
@@ -66,6 +104,12 @@
   - <code>zevic --lib</code> で静的ライブラリと C ヘッダーを作る
   - '標準ライブラリ: <code>Math</code> <code>Env</code> <code>Text</code> <code>Time</code> <code>Fs</code> <code>Process</code>、標準入力'
   release: false
+  summary_en: The package manager zevpm and tests; the second tier of the standard library.
+  changes_en:
+  - '<code>zevpm</code>: <code>new</code> <code>build</code> <code>run</code> <code>test</code> <code>get</code> <code>update</code> and more. Dependencies come from git or a path and are pinned in <code>zevic.lock</code>'
+  - <code>test &quot;name&quot; { }</code> blocks and <code>Zevic.Test</code>
+  - <code>zevic --lib</code> builds a static library and a C header
+  - 'Standard library: <code>Math</code> <code>Env</code> <code>Text</code> <code>Time</code> <code>Fs</code> <code>Process</code>, and standard input'
 - version: 0.2.0
   date: 2026-11-01
   summary: クロージャ、defer、GC。
@@ -75,6 +119,12 @@
   - Boehm GC を同梱。ランタイムは初回だけコンパイルしてキャッシュします
   - '<code>Handle&lt;T&gt;</code>: C に Zevic のオブジェクトを数値で持たせる'
   release: false
+  summary_en: Closures, defer and the GC.
+  changes_en:
+  - 'Lambdas and closures <code>(x: I32) =&gt; x + n</code>; functions as values'
+  - <code>defer</code> and <code>params</code> (variadic parameters)
+  - The Boehm GC is bundled. The runtime is compiled once and cached
+  - '<code>Handle&lt;T&gt;</code>: lets C hold a number for a Zevic object'
 - version: 0.1.0
   date: 2026-11-01
   summary: C との連携と interface。
@@ -84,6 +134,12 @@
   - <code>interface</code>（デフォルトメソッド、継承、動的呼び出し）とジェネリクスの制約
   - <code>Map&lt;K, V&gt;</code>（挿入順）と <code>Set&lt;T&gt;</code>
   release: false
+  summary_en: C interop and interfaces.
+  changes_en:
+  - <code>extern &quot;C&quot;</code> and <code>export &quot;C&quot;</code>, C types (<code>CInt</code> <code>CString</code> and more), <code>--emit-header</code>
+  - Build together with C / C++ files (<code>.c</code> <code>.cpp</code> <code>.o</code> <code>.a</code>)
+  - <code>interface</code> (default methods, extension, dynamic calls) and generic constraints
+  - <code>Map&lt;K, V&gt;</code> (insertion ordered) and <code>Set&lt;T&gt;</code>
 - version: 0.0.3
   date: 2026-10-31
   summary: 'データ型: struct / class / enum、Option / Result。'
@@ -92,15 +148,26 @@
   - <code>Option</code> と <code>Result</code>、<code>?</code> 演算子、<code>Error</code>
   - <code>Array&lt;T&gt;</code> を Zevic 自身で実装。ジェネリクス（単相化）とタプル
   release: false
+  summary_en: 'Data: struct / class / enum, Option / Result.'
+  changes_en:
+  - <code>struct</code> <code>class</code> <code>enum</code>, and <code>match</code> with guards, ranges, nested patterns and an exhaustiveness check
+  - <code>Option</code> and <code>Result</code>, the <code>?</code> operator, <code>Error</code>
+  - <code>Array&lt;T&gt;</code> written in Zevic itself; generics (monomorphisation) and tuples
 - version: 0.0.2
   date: ''
   summary: 数値、制御構文、関数。
   changes:
   - FizzBuzz・階乗・素数が動き、オーバーフロー検査、<code>Panic</code>、<code>Printf</code> が入りました
   release: false
+  summary_en: Numbers, control flow and functions.
+  changes_en:
+  - FizzBuzz, factorial and primes run; overflow checks, <code>Panic</code> and <code>Printf</code> arrive
 - version: 0.0.1
   date: ''
   summary: 最初のバージョン。Hello World。
   changes:
   - 最初のコンパイラ zevic0（C 実装）が、テキストの LLVM IR を出力し、clang でビルドします
   release: false
+  summary_en: 'The first version: Hello World.'
+  changes_en:
+  - zevic0, the first compiler (written in C), emits textual LLVM IR and builds it with clang
