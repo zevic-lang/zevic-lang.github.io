@@ -61,6 +61,11 @@
     c.innerHTML = hl(c.textContent);
   });
 
+  // ---- short inline code is never split across lines (e.g. at the hyphens of --emit-header) ----
+  doc.querySelectorAll(".prose :not(pre) > code, .facts code, .hero code").forEach(function (c) {
+    if (c.textContent.length <= 30) c.classList.add("nb");
+  });
+
   // ---- wide tables scroll inside their own box ----
   doc.querySelectorAll(".prose table").forEach(function (t) {
     var w = doc.createElement("div"); w.className = "table-wrap";

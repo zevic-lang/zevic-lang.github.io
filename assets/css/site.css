@@ -86,7 +86,8 @@ div.highlighter-rouge,pre.plain{background:var(--code-bg);color:var(--code-fg);b
 div.highlighter-rouge .highlight{background:none;margin:0}
 pre{background:none;color:var(--code-fg);padding:14px 16px;overflow:auto;line-height:1.7;font-size:.92rem;tab-size:4;margin:0}
 pre code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
-:not(pre)>code{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.88em}
+:not(pre)>code{background:var(--bg2);border-radius:4px;padding:.1em .38em;font-size:.86em;margin:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+:not(pre)>code.nb{white-space:nowrap}
 .tok-kw{color:var(--c-kw);font-weight:600}.tok-ty{color:var(--c-ty)}.tok-str{color:var(--c-str)}
 .tok-num{color:var(--c-num)}.tok-cm{color:var(--c-cm);font-style:italic}.tok-fn{color:#fff}
 .codewrap{position:relative}
@@ -105,7 +106,7 @@ pre code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
 .prose h2{margin:2.4em 0 .6em;font-size:1.35rem;line-height:1.5;padding-top:1em;border-top:1px solid var(--line)}
 .prose h2:first-of-type{border-top:0;padding-top:0}
 .prose h3{margin:1.8em 0 .4em;font-size:1.08rem}
-.prose p,.prose li{overflow-wrap:anywhere}
+.prose p,.prose li{overflow-wrap:anywhere;line-height:1.95}
 .prose li{margin:.25em 0}
 .prose table{border-collapse:collapse;width:100%;font-size:.92rem}
 .prose table.wide{min-width:520px}
