@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.title and page.url != "/" %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
+<title>{% if page.title and page.url != "/" and page.url != "/en/" %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.data.i18n[page.lang].tagline }}{% endif %}</title>
 <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#071026">
 <meta property="og:image" content="{{ '/assets/img/og.png' | absolute_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+{% if page.alt %}<link rel="alternate" hreflang="{% if page.lang == 'ja' %}en{% else %}ja{% endif %}" href="{{ page.alt | absolute_url }}">{% endif %}
 {% seo title=false %}
 {% feed_meta %}
 <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>

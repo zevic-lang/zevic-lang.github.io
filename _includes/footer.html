@@ -1,15 +1,16 @@
+{% assign t = site.data.i18n[page.lang] %}
 <footer class="site-footer">
   <div class="wrap">
     <div class="cols">
       <div>
         <strong>Zevic</strong> {{ site.version }}<br>
-        <span class="muted">Apache-2.0 ライセンス</span>
+        <span class="muted">{{ t.license }}</span>
       </div>
       <div>
-        <a href="{{ site.repo }}">zevic</a> ・ <a href="{{ site.github_org }}/zevic-c">zevic-c（アーカイブ）</a> ・ <a href="{{ site.github_org }}/examples">examples</a>
+        <a href="{{ site.repo }}">zevic</a> ・ <a href="{{ site.github_org }}/zevic-c">zevic-c ({{ t.archived }})</a> ・ <a href="{{ site.github_org }}/examples">examples</a>
       </div>
       <div>
-        <a href="/feed.xml">フィード</a> ・ <a href="{{ site.repo }}/blob/main/docs/spec/zevic-spec.md">言語仕様</a>
+        <a href="/feed.xml">{{ t.feed }}</a> ・ <a href="{{ site.repo }}/blob/main/docs/spec/zevic-spec.md">{{ t.spec }}</a>
       </div>
     </div>
   </div>

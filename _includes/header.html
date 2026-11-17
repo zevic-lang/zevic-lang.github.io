@@ -1,13 +1,15 @@
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/"><img src="/assets/img/icon-192.png" alt="" width="36" height="36"><span>Zevic</span></a>
-    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false" aria-controls="nav">メニュー</button>
+    {% assign t = site.data.i18n[page.lang] %}
+    <a class="brand" href="{{ t.home_url }}"><img src="/assets/img/icon-192.png" alt="" width="36" height="36"><span>Zevic</span></a>
+    <button class="nav-toggle" aria-label="{{ t.menu }}" aria-expanded="false" aria-controls="nav">{{ t.menu }}</button>
     <nav id="nav" class="nav">
-      {% for item in site.data.nav %}
+      {% for item in site.data.nav[page.lang] %}
       <a href="{{ item.url }}"{% if page.url contains item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
       {% endfor %}
       <a class="ext" href="{{ site.repo }}">GitHub</a>
-      <button class="theme-toggle" aria-label="テーマ切り替え" title="テーマ切り替え">明暗</button>
+      <a class="lang" href="{{ page.alt | default: t.alt_home }}" hreflang="{% if page.lang == 'ja' %}en{% else %}ja{% endif %}" lang="{% if page.lang == 'ja' %}en{% else %}ja{% endif %}">{{ t.lang_name }}</a>
+      <button class="theme-toggle" aria-label="{{ t.theme_title }}" title="{{ t.theme_title }}">{{ t.theme }}</button>
     </nav>
   </div>
 </header>

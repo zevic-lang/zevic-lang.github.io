@@ -39,7 +39,7 @@ code,pre,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation 
 .nav a{color:var(--fg);text-decoration:none;padding:16px 11px 14px;font-size:.92rem;border-bottom:2px solid transparent}
 .nav a:hover{border-bottom-color:var(--line)}
 .nav a[aria-current]{border-bottom-color:var(--gold);font-weight:700}
-.nav .ext{color:var(--muted)}
+.nav .ext,.nav .lang{color:var(--muted)}
 .theme-toggle,.nav-toggle{background:none;border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:3px 9px;font:inherit;font-size:.8rem;cursor:pointer;margin-left:8px}
 .theme-toggle:hover,.nav-toggle:hover{color:var(--fg);border-color:var(--muted)}
 .nav-toggle{display:none;margin-left:auto;font-size:.9rem}

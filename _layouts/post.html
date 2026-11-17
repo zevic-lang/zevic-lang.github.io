@@ -1,11 +1,12 @@
 ---
 layout: default
 ---
+{% assign t = site.data.i18n[page.lang] %}
 <div class="wrap prose-wrap">
   <article class="prose">
-    <p class="muted"><a href="/blog/">← ブログ</a></p>
+    <p class="muted"><a href="{% if page.lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}">{{ t.back_blog }}</a></p>
     <h1 class="page-title">{{ page.title }}</h1>
-    <p class="muted"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%-m月%-d日" }}</time></p>
+    <p class="muted"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: t.date_fmt }}</time></p>
     {{ content }}
   </article>
 </div>
