@@ -1,0 +1,87 @@
+---
+layout: home
+title: Zevic
+permalink: /en/
+alt: /
+description: Zevic is a small, easy-to-write native language that uses C code as it is.
+---
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="ver">v{{ site.version }}</p>
+      <h1>A small native language<br>that uses C code as it is.</h1>
+      <p class="lead">Zevic turns source code into LLVM IR and lets clang produce the machine code. Types are always written, failures come back as a <code>Result</code>, and a GC manages memory. The compiler is written in Zevic itself.</p>
+      <div class="btns">
+        <a class="btn primary" href="/en/start/">Get started</a>
+        <a class="btn" href="/en/install/">Install</a>
+        <a class="btn" href="/en/about/">About Zevic</a>
+      </div>
+    </div>
+    <img class="logo" src="/assets/img/logo.png" alt="The Zevic logo: a gold dragon and a blue dragon circling the letter Z" width="240" height="240">
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap example">
+    <div class="highlighter-rouge language-zevic"><div class="highlight"><pre class="highlight"><code>module Main
+
+import Zevic.Console
+
+fn FizzBuzz(n: I32) -&gt; String {
+    if (n % 15 == 0) {
+        "FizzBuzz"
+    } else if (n % 3 == 0) {
+        "Fizz"
+    } else if (n % 5 == 0) {
+        "Buzz"
+    } else {
+        "${n}"
+    }
+}
+
+fn Main() {
+    for (i in 1..=20) {
+        Console.Println(FizzBuzz(i))
+    }
+}</code></pre></div></div>
+    <div>
+      <h2>Compile and run</h2>
+      <div class="highlighter-rouge language-sh"><div class="highlight"><pre class="highlight"><code>zevic fizzbuzz.zev -o fizzbuzz
+./fizzbuzz</code></pre></div></div>
+      <p><code>if</code> and <code>match</code> are expressions that return values, and the last expression is the function's result. There are no exceptions and no null. Continue with the <a href="/en/start/">tutorial</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Features</h2>
+    <ul class="facts">
+      <li><b>Uses C as it is</b><span>Call C functions with <code>extern "C"</code> and expose Zevic functions to C with <code>export "C"</code>. C sources build together with Zevic.</span></li>
+      <li><b>Self-hosted</b><span>The compiler <code>zevic1</code> is written in Zevic and builds itself to the same LLVM IR (<code>make bootstrap</code>).</span></li>
+      <li><b>Failures are types</b><span><code>Option</code> and <code>Result</code>, and the <code>?</code> operator. No exceptions, no null.</span></li>
+      <li><b>Expressive types</b><span><code>struct</code> / <code>class</code> / <code>enum</code> / <code>interface</code>, generics, closures and union types <code>A | B</code>.</span></li>
+      <li><b>Concurrency</b><span><code>async</code> / <code>await</code>, channels, OS threads (<code>Thread.Spawn</code>) and arbitrary-precision <code>BigInt</code>.</span></li>
+      <li><b>Standard library</b><span><code>Fs</code> <code>Json</code> <code>Http</code> <code>Net</code> <code>Regex</code> <code>Csv</code> <code>Toml</code> <code>DateTime</code> <code>Zip</code> <code>Cli</code> and more: over 30 modules.</span></li>
+      <li><b>Tools</b><span><code>zevpm</code> for packages and builds, <code>zevfmt</code> for formatting, and <code>test</code> blocks for testing.</span></li>
+      <li><b>Garbage collected</b><span>The Boehm GC is bundled, so you can write code without thinking about memory management.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Latest news</h2>
+    <ul class="rel">
+    {% assign posts = site.posts | where: "lang", page.lang %}
+    {% for post in posts limit:3 %}
+      <li>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <span class="muted">{{ post.date | date: "%B %-d, %Y" }}</span>
+      </li>
+    {% endfor %}
+    </ul>
+    <p><a href="/en/blog/">All posts →</a></p>
+  </div>
+</section>
