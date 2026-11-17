@@ -15,9 +15,11 @@ Zevic は、ソースコードを**テキストの LLVM IR** に変換し、機�
 ## しくみ
 
 ```text
- .zev ソース ──▶ zevic（字句解析・構文解析・型検査） ──▶ LLVM IR ──▶ clang ──▶ 実行ファイル
-                                                           ▲
-                                      ランタイム・Boehm GC・C のソース（あれば）
+.zev ソース
+  → zevic（字句解析・構文解析・型検査）
+  → LLVM IR（テキスト）
+  → clang ← ランタイム・Boehm GC・C のソース
+  → 実行ファイル
 ```
 
 `zevic` は clang を次の順に探します: `--cc`、環境変数 `ZEVIC_CLANG`、`PATH` 上の `clang`、そして Homebrew や `/usr/lib/llvm-*/bin` などの既定の場所。clang 15 以上が必要です。
