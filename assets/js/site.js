@@ -70,7 +70,7 @@
 
   // ---- copy buttons ----
   doc.querySelectorAll("pre").forEach(function (pre) {
-    if (pre.closest(".out")) return;
+    if (pre.closest(".out") || pre.closest(".language-text")) return;
     var host = pre.closest(".highlighter-rouge") || pre;
     var wrap = doc.createElement("div"); wrap.className = "codewrap";
     host.parentNode.insertBefore(wrap, host); wrap.appendChild(host);
