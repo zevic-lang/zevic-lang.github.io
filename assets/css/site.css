@@ -139,3 +139,7 @@ pre code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
 .site-footer a{color:var(--muted)}
 .site-footer a:hover{color:var(--fg)}
 .site-footer .cols{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}
+
+/* shell commands wrap instead of hiding behind the copy button; keep room for it */
+.codewrap pre{padding-right:76px}
+.language-sh pre,.language-powershell pre,.language-shell pre{white-space:pre-wrap;overflow-wrap:anywhere}
