@@ -27,9 +27,13 @@ plugins:
 
 defaults:
   - scope: { path: "", type: "posts" }
-    values: { layout: post }
+    values: { layout: post, lang: ja }
+  - scope: { path: "_posts/en", type: "posts" }
+    values: { lang: en, permalink: "/en/blog/:year/:month/:day/:title/" }
   - scope: { path: "", type: "pages" }
-    values: { layout: page }
+    values: { layout: page, lang: ja }
+  - scope: { path: "en", type: "pages" }
+    values: { lang: en }
 
 exclude:
   - Gemfile
