@@ -28,7 +28,7 @@ plugins:
 defaults:
   - scope: { path: "", type: "posts" }
     values: { layout: post }
-  - scope: { path: "" }
+  - scope: { path: "", type: "pages" }
     values: { layout: page }
 
 exclude:
