@@ -61,6 +61,12 @@
     c.innerHTML = hl(c.textContent);
   });
 
+  // ---- wide tables scroll inside their own box ----
+  doc.querySelectorAll(".prose table").forEach(function (t) {
+    var w = doc.createElement("div"); w.className = "table-wrap";
+    t.parentNode.insertBefore(w, t); w.appendChild(t);
+  });
+
   // ---- copy buttons ----
   doc.querySelectorAll("pre").forEach(function (pre) {
     if (pre.closest(".out")) return;
