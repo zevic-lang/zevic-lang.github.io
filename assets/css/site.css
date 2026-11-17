@@ -77,11 +77,12 @@ section.block .sub{color:var(--muted);margin:0 0 22px}
 @media (max-width:860px){.two{grid-template-columns:1fr}}
 
 /* code */
+/* code blocks: the box is the wrapper div (rouge puts class="highlight" on both a div and the pre) */
 pre,div.highlighter-rouge{margin:16px 0}
-pre{background:var(--code-bg);color:var(--code-fg);padding:14px 16px;border-radius:12px;overflow:auto;line-height:1.6;font-size:.88rem;border:1px solid var(--line);tab-size:4}
-pre code{background:none;padding:0;color:inherit;font-size:inherit}
-.highlighter-rouge .highlight{background:none}
-.highlighter-rouge .highlight pre{margin:0}
+div.highlighter-rouge,pre.plain{background:var(--code-bg);color:var(--code-fg);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+div.highlighter-rouge .highlight{background:none;margin:0}
+pre{background:none;color:var(--code-fg);padding:14px 16px;overflow:auto;line-height:1.6;font-size:.88rem;tab-size:4;margin:0}
+pre code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
 :not(pre)>code{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.88em}
 .tok-kw{color:var(--c-kw);font-weight:600}.tok-ty{color:var(--c-ty)}.tok-str{color:var(--c-str)}
 .tok-num{color:var(--c-num)}.tok-cm{color:var(--c-cm);font-style:italic}.tok-fn{color:#fff}
