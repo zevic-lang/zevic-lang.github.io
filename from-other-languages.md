@@ -87,6 +87,7 @@ zevic main.zev native.c -o app && ./app
 ```text
 42
 ```
+{: .out}
 
 ### Rust から
 
