@@ -1,0 +1,39 @@
+---
+title: 開発者
+permalink: /developers/
+lead: Zevic を作っている人たちです。
+---
+<ul class="rel">
+{% for d in site.data.developers %}
+<li class="dev">
+<img src="{{ d.avatar }}" alt="" width="64" height="64" loading="lazy">
+<div>
+<h3><a href="{{ d.url }}">{{ d.name }}</a></h3>
+<p class="muted">{{ d.role }}</p>
+</div>
+</li>
+{% endfor %}
+</ul>
+
+<h2>参加するには</h2>
+<p>Zevic はまだ小さなプロジェクトで、バグ報告、ドキュメントの修正、標準ライブラリやツールの改善、サンプルの追加、パッケージの公開など、どんな形の参加も歓迎します。</p>
+<ul>
+<li>開発の進め方は <a href="https://github.com/zevic-lang/zevic/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></li>
+<li>言語の変更は<a href="https://github.com/zevic-lang/zevic/tree/main/docs/proposals">提案（proposals）</a>として書きます</li>
+<li>問題の報告は <a href="https://github.com/zevic-lang/zevic/issues">GitHub Issues</a> へ</li>
+<li>コードは <a href="https://github.com/zevic-lang/zevic/blob/main/LICENSE">Apache-2.0</a> で公開されます</li>
+</ul>
+
+<h2>リポジトリ</h2>
+<p>組織は <a href="https://github.com/zevic-lang">zevic-lang</a> です。</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>リポジトリ</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><a href="https://github.com/zevic-lang/zevic">zevic</a></td><td>コンパイラ、zevpm、zevfmt、標準ライブラリ、言語仕様</td></tr>
+<tr><td><a href="https://github.com/zevic-lang/examples">examples</a></td><td>期待される出力つきのサンプル集</td></tr>
+<tr><td><a href="https://github.com/zevic-lang/zevic-c">zevic-c</a></td><td>最初の C 実装（アーカイブ）</td></tr>
+<tr><td><a href="https://github.com/zevic-lang/zevic-lang.github.io">zevic-lang.github.io</a></td><td>このサイト</td></tr>
+</tbody>
+</table>
+</div>

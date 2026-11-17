@@ -1,0 +1,54 @@
+---
+title: リリース・開発状況
+permalink: /releases/
+lead: 各バージョンの変更点と、開発の現在地です。ダウンロードは GitHub Releases にあります。
+---
+<div class="note">
+  <p>Zevic は開発中の言語です。0.x の間は、言語仕様や標準ライブラリの API が変わることがあります。変更点は各リリースの記録と <a href="https://github.com/zevic-lang/zevic/blob/main/CHANGELOG.md">CHANGELOG</a> にあります。</p>
+</div>
+
+<h2>開発状況</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>領域</th><th>状況</th></tr></thead>
+<tbody>
+<tr><td>コンパイラ</td><td>セルフホスト済み（<code>zevic1</code>）。C 実装は<a href="https://github.com/zevic-lang/zevic-c">アーカイブ</a>済み</td></tr>
+<tr><td>言語機能</td><td>型、<code>struct</code> / <code>class</code> / <code>enum</code> / <code>interface</code>、ジェネリクス、クロージャ、共用体型、<code>defer</code>、<code>async</code> / <code>await</code>、<code>test</code> ブロック</td></tr>
+<tr><td>C 連携</td><td><code>extern "C"</code> / <code>export "C"</code>、ヘッダーの生成、C / C++ のソースの同時ビルド</td></tr>
+<tr><td>標準ライブラリ</td><td>30 以上のモジュール。HTTP は TLS 未対応</td></tr>
+<tr><td>ツール</td><td><code>zevpm</code>（パッケージ・ビルド・テスト）、<code>zevfmt</code>（整形）</td></tr>
+<tr><td>対応 OS</td><td>Linux（x64）、macOS（arm64）、Windows（x64）。Termux はソースからビルド</td></tr>
+<tr><td>既知の制限</td><td>DateTime のタイムゾーンは固定オフセットのみ。TOML の日時はテキストのまま。正規表現のフラグはパターン全体に効く</td></tr>
+</tbody>
+</table>
+</div>
+<p>ロードマップは <a href="https://github.com/zevic-lang/zevic/blob/main/docs/plan.md">docs/plan.md</a>、設計の提案は <a href="https://github.com/zevic-lang/zevic/tree/main/docs/proposals">docs/proposals</a> にあります。</p>
+
+<h2>リリース一覧</h2>
+<ul class="rel">
+{% for r in site.data.releases %}
+<li id="v{{ r.version }}">
+<h3>v{{ r.version }}{% if forloop.first %}<span class="tag">最新</span>{% endif %}</h3>
+<p class="muted">{% if r.date != "" %}{{ r.date | date: "%Y年%-m月%-d日" }} ・ {% endif %}{{ r.summary }}</p>
+<ul>
+{% for c in r.changes %}<li>{{ c }}</li>
+{% endfor %}</ul>
+{% if r.release %}<ul class="dl"><li><a href="https://github.com/zevic-lang/zevic/releases/tag/v{{ r.version }}">リリースノートとダウンロード</a></li></ul>{% endif %}
+</li>
+{% endfor %}
+</ul>
+
+<h2>各リリースに含まれるファイル</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>ファイル</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td><code>zevic-&lt;版&gt;-linux-x64.tar.gz</code></td><td>Linux（x64）</td></tr>
+<tr><td><code>zevic_&lt;版&gt;_amd64.deb</code></td><td>Debian / Ubuntu（amd64）</td></tr>
+<tr><td><code>zevic-&lt;版&gt;-macos-arm64.pkg</code> / <code>.tar.gz</code></td><td>macOS（Apple Silicon）</td></tr>
+<tr><td><code>zevic-&lt;版&gt;-windows-x64-setup.exe</code> / <code>.zip</code></td><td>Windows（x64）</td></tr>
+<tr><td><code>install.sh</code> / <code>install.ps1</code></td><td>展開済みのアーカイブ向けインストーラー</td></tr>
+<tr><td><code>SHA256SUMS.txt</code></td><td>チェックサム</td></tr>
+</tbody>
+</table>
+</div>
