@@ -242,9 +242,9 @@ Create a project with `zevpm`.
 ```sh
 zevpm new myapp
 cd myapp
-zevpm run        # ビルドして実行
-zevpm test       # テストを実行
-zevfmt -w .      # コードを整形
+zevpm run        # build and run
+zevpm test       # run the tests
+zevfmt -w .      # format the code
 ```
 
 ## 8. Next steps {#s8}
