@@ -1,5 +1,6 @@
 ---
 title: "Zevic を始めました"
+alt: /en/blog/2026/10/29/project-start/
 ---
 Zevic の開発を始めました。最初の日にあったのは、言語仕様の草案と実装計画、そして手で書いた LLVM IR だけです。
 
