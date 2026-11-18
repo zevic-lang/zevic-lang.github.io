@@ -54,7 +54,7 @@ git clone https://github.com/zevic-lang/zevic
 cd zevic
 make            # build/zevic, build/zevpm, build/zevfmt
 make test       # ゴールデンテスト・zevpm のテスト・examples
-./build/zevic examples/01_hello.zev -o hello && ./hello
+./build/zevic examples/01_hello/src/Main.zev -o hello && ./hello
 ```
 
 ## 動作確認
