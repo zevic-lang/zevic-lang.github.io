@@ -1,0 +1,18 @@
+---
+title: Blog
+permalink: /en/blog/
+alt: /blog/
+lead: Release announcements and articles about the design.
+---
+{% assign t = site.data.i18n[page.lang] %}
+<ul class="rel">
+{% assign posts = site.posts | where: "lang", page.lang %}
+{% for post in posts %}
+<li>
+<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+<p class="muted">{{ post.date | date: t.date_fmt }}</p>
+{% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncate: 160 }}</p>{% endif %}
+</li>
+{% endfor %}
+</ul>
+<p><a href="/feed.xml">{{ t.feed_atom }}</a></p>
