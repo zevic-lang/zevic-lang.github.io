@@ -1,3 +1,20 @@
+- version: 0.4.6
+  date: 2026-11-19
+  summary: エラーメッセージの改善（名前の候補、null、return 抜けの位置）。examples を個別のパッケージに。
+  changes:
+  - 未定義の名前・関数・モジュールメンバーのエラーに、近い名前の候補（<code>note: did you mean `Println`?</code>）を添えます
+  - <code>null</code> は「Zevic に null は無い」と説明し、<code>Option</code> を案内します。数値・<code>Bool</code>・<code>Char</code> を <code>String</code> として渡したときは文字列補間を提案します
+  - 値で終わらない関数のエラーを、開き <code>{</code> ではなく閉じ <code>}</code> の位置に出します
+  - 閉じていない文字列のあとは、その字句エラーだけを報告します（続くパースエラーは出しません）
+  - <code>examples/</code> の例を、それぞれ <code>zevic.toml</code> と <code>src/Main.zev</code> を持つ個別のパッケージにしました。ディレクトリで <code>zevpm run</code> を実行できます
+  release: true
+  summary_en: Better error messages (name suggestions, null, the location of a missing return). Every example is now its own package.
+  changes_en:
+  - Errors about an unknown name, function or module member add the closest name (<code>note: did you mean `Println`?</code>)
+  - <code>null</code> explains that Zevic has no null and points to <code>Option</code>. Passing a number, <code>Bool</code> or <code>Char</code> where a <code>String</code> is expected suggests string interpolation
+  - A function that does not end with a value is reported at its closing <code>}</code> instead of the opening <code>{</code>
+  - After an unterminated string only that lexical error is reported, not the parse errors that follow from it
+  - Every example under <code>examples/</code> is now a package of its own, with <code>zevic.toml</code> and <code>src/Main.zev</code>. Run one with <code>zevpm run</code> in its directory
 - version: 0.4.5
   date: 2026-11-16
   summary: Termux など書き込み可能な /tmp が無い環境に対応。ビルド成果物の名前を整理。
