@@ -74,15 +74,16 @@
   });
 
   // ---- copy buttons ----
+  var L = (doc.documentElement.lang === "en") ? { copy: "Copy", copied: "Copied" } : { copy: "コピー", copied: "コピーしました" };
   doc.querySelectorAll("pre").forEach(function (pre) {
     if (pre.closest(".out") || pre.closest(".language-text")) return;
     var host = pre.closest(".highlighter-rouge") || pre;
     var wrap = doc.createElement("div"); wrap.className = "codewrap";
     host.parentNode.insertBefore(wrap, host); wrap.appendChild(host);
-    var b = doc.createElement("button"); b.className = "copy"; b.type = "button"; b.textContent = "コピー";
+    var b = doc.createElement("button"); b.className = "copy"; b.type = "button"; b.textContent = L.copy;
     b.addEventListener("click", function () {
       var t = pre.innerText.replace(/\n$/, "");
-      var done = function () { b.textContent = "コピーしました"; setTimeout(function () { b.textContent = "コピー"; }, 1500); };
+      var done = function () { b.textContent = L.copied; setTimeout(function () { b.textContent = L.copy; }, 1500); };
       if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () {});
     });
     wrap.appendChild(b);
