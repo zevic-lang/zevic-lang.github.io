@@ -2,6 +2,7 @@
 title: はじめての Zevic
 permalink: /start/
 lead: プログラミングが初めての方向けに、1 ページで Zevic の基本を一通り動かします。ここにあるコードはすべて、実際にコンパイルして動かして確かめたものです。
+alt: /en/start/
 ---
 <div class="toc" markdown="1">
 1. [準備](#s1)

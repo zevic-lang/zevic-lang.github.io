@@ -2,6 +2,7 @@
 title: 概要
 permalink: /about/
 lead: Zevic は、C のコードをそのまま使える、小さくて書きやすいネイティブ言語です。
+alt: /en/about/
 ---
 ## 設計の考え方
 

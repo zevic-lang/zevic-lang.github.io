@@ -2,6 +2,7 @@
 title: 他の言語から来た方へ
 permalink: /from-other-languages/
 lead: C / C++ / Rust / Go / Python / TypeScript などを書いたことがある方向けに、違いが出やすいところをまとめます。プログラミングが初めての方は、先に[はじめての Zevic](/start/)をどうぞ。
+alt: /en/from-other-languages/
 ---
 ## 一目でわかる特徴
 

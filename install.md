@@ -2,6 +2,7 @@
 title: インストール
 permalink: /install/
 lead: clang と一緒に入ります。お使いの環境を選んでください。
+alt: /en/install/
 ---
 Zevic は clang（15 以上）を使います。次のインストール方法は clang も一緒に用意します。
 
