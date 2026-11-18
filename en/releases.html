@@ -1,0 +1,55 @@
+---
+title: Releases and status
+permalink: /en/releases/
+alt: /releases/
+lead: What changed in each version, and where development stands. Downloads are on GitHub Releases.
+---
+<div class="note">
+  <p>Zevic is a language under development. While it is 0.x, the language specification and the standard library API may change. Changes are recorded in each release and in the <a href="https://github.com/zevic-lang/zevic/blob/main/CHANGELOG.md">CHANGELOG</a>.</p>
+</div>
+
+<h2>Status</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Area</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Compiler</td><td>Self-hosted (<code>zevic1</code>). The C implementation is <a href="https://github.com/zevic-lang/zevic-c">archived</a></td></tr>
+<tr><td>Language</td><td>Types, <code>struct</code> / <code>class</code> / <code>enum</code> / <code>interface</code>, generics, closures, union types, <code>defer</code>, <code>async</code> / <code>await</code>, <code>test</code> blocks</td></tr>
+<tr><td>C interop</td><td><code>extern "C"</code> / <code>export "C"</code>, header generation, building C / C++ sources together</td></tr>
+<tr><td>Standard library</td><td>Over 30 modules. HTTP has no TLS yet</td></tr>
+<tr><td>Tools</td><td><code>zevpm</code> (packages, builds, tests) and <code>zevfmt</code> (formatter)</td></tr>
+<tr><td>Platforms</td><td>Linux (x64), macOS (arm64), Windows (x64). Termux: build from source</td></tr>
+<tr><td>Known limits</td><td>DateTime supports only fixed UTC offsets as time zones. TOML dates and times stay as text. Regex flags apply to the whole pattern</td></tr>
+</tbody>
+</table>
+</div>
+<p>The roadmap is in <a href="https://github.com/zevic-lang/zevic/blob/main/docs/plan.md">docs/plan.md</a>, and design proposals are in <a href="https://github.com/zevic-lang/zevic/tree/main/docs/proposals">docs/proposals</a>.</p>
+
+<h2>All releases</h2>
+<ul class="rel">
+{% for r in site.data.releases %}
+<li id="v{{ r.version }}">
+<h3>v{{ r.version }}{% if forloop.first %}<span class="tag">latest</span>{% endif %}</h3>
+<p class="muted">{% if r.date != "" %}{{ r.date | date: "%B %-d, %Y" }} · {% endif %}{{ r.summary_en }}</p>
+<ul>
+{% for c in r.changes_en %}<li>{{ c }}</li>
+{% endfor %}</ul>
+{% if r.release %}<ul class="dl"><li><a href="https://github.com/zevic-lang/zevic/releases/tag/v{{ r.version }}">Release notes and downloads</a></li></ul>{% endif %}
+</li>
+{% endfor %}
+</ul>
+
+<h2>Files in each release</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>File</th><th>For</th></tr></thead>
+<tbody>
+<tr><td><code>zevic-&lt;version&gt;-linux-x64.tar.gz</code></td><td>Linux (x64)</td></tr>
+<tr><td><code>zevic_&lt;version&gt;_amd64.deb</code></td><td>Debian / Ubuntu (amd64)</td></tr>
+<tr><td><code>zevic-&lt;version&gt;-macos-arm64.pkg</code> / <code>.tar.gz</code></td><td>macOS (Apple Silicon)</td></tr>
+<tr><td><code>zevic-&lt;version&gt;-windows-x64-setup.exe</code> / <code>.zip</code></td><td>Windows (x64)</td></tr>
+<tr><td><code>install.sh</code> / <code>install.ps1</code></td><td>Installers for an extracted archive</td></tr>
+<tr><td><code>SHA256SUMS.txt</code></td><td>Checksums</td></tr>
+</tbody>
+</table>
+</div>
