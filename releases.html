@@ -16,7 +16,7 @@ alt: /en/releases/
 <tr><td>コンパイラ</td><td>セルフホスト済み（<code>zevic1</code>）。C 実装は<a href="https://github.com/zevic-lang/zevic-c">アーカイブ</a>済み</td></tr>
 <tr><td>言語機能</td><td>型、<code>struct</code> / <code>class</code> / <code>enum</code> / <code>interface</code>、ジェネリクス、クロージャ、共用体型、<code>defer</code>、<code>async</code> / <code>await</code>、<code>test</code> ブロック</td></tr>
 <tr><td>C 連携</td><td><code>extern "C"</code> / <code>export "C"</code>、ヘッダーの生成、C / C++ のソースの同時ビルド</td></tr>
-<tr><td>標準ライブラリ</td><td>30 以上のモジュール。HTTP は TLS 未対応</td></tr>
+<tr><td>標準ライブラリ</td><td>30 以上のモジュール。<code>Http</code> は TLS なし（HTTPS は <a href="https://github.com/zevic-lang/curl">curl</a> パッケージ）</td></tr>
 <tr><td>ツール</td><td><code>zevpm</code>（パッケージ・ビルド・テスト）、<code>zevfmt</code>（整形）</td></tr>
 <tr><td>対応 OS</td><td>Linux（x64）、macOS（arm64）、Windows（x64）。Termux はソースからビルド</td></tr>
 <tr><td>既知の制限</td><td>DateTime のタイムゾーンは固定オフセットのみ。TOML の日時はテキストのまま。正規表現のフラグはパターン全体に効く</td></tr>

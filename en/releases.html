@@ -16,7 +16,7 @@ lead: What changed in each version, and where development stands. Downloads are 
 <tr><td>Compiler</td><td>Self-hosted (<code>zevic1</code>). The C implementation is <a href="https://github.com/zevic-lang/zevic-c">archived</a></td></tr>
 <tr><td>Language</td><td>Types, <code>struct</code> / <code>class</code> / <code>enum</code> / <code>interface</code>, generics, closures, union types, <code>defer</code>, <code>async</code> / <code>await</code>, <code>test</code> blocks</td></tr>
 <tr><td>C interop</td><td><code>extern "C"</code> / <code>export "C"</code>, header generation, building C / C++ sources together</td></tr>
-<tr><td>Standard library</td><td>Over 30 modules. HTTP has no TLS yet</td></tr>
+<tr><td>Standard library</td><td>Over 30 modules. <code>Http</code> has no TLS (HTTPS is the <a href="https://github.com/zevic-lang/curl">curl</a> package)</td></tr>
 <tr><td>Tools</td><td><code>zevpm</code> (packages, builds, tests) and <code>zevfmt</code> (formatter)</td></tr>
 <tr><td>Platforms</td><td>Linux (x64), macOS (arm64), Windows (x64). Termux: build from source</td></tr>
 <tr><td>Known limits</td><td>DateTime supports only fixed UTC offsets as time zones. TOML dates and times stay as text. Regex flags apply to the whole pattern</td></tr>

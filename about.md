@@ -45,6 +45,8 @@ Zevic は、ソースコードを**テキストの LLVM IR** に変換し、機�
 
 `Async` `BigInt` `Bytes` `Chars` `Cli` `Console` `Convert` `Csv` `DateTime` `Deflate` `Digest` `Encoding` `Env` `Fs` `Gzip` `Http` `Json` `Log` `Math` `Net` `Path` `Process` `Random` `Regex` `Tar` `Test` `Text` `Thread` `Time` `Toml` `Zip` `Zlib`
 
+`Http` は依存なしで使える HTTP のサーバーとクライアントで、TLS は持ちません。HTTPS が必要なときは、libcurl を使う [curl パッケージ](https://github.com/zevic-lang/curl)（`zevpm get zevic-lang/curl`）を使います。
+
 ## 現在の状況
 
 バージョン {{ site.version }}。型、`struct` / `class` / `enum`、共用体型、`interface`、ジェネリクス、クロージャ、`defer`、GC、C との連携、`test` ブロック、`async` / `await`、HTTP（TLS なし）、`zevpm` と標準ライブラリが動作しています。開発中の言語なので、仕様は今後も変わります。詳しくは[リリース](/releases/)と[言語仕様](https://github.com/zevic-lang/zevic/blob/main/docs/spec/zevic-spec.md)をご覧ください。
