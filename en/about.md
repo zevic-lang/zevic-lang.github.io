@@ -45,6 +45,8 @@ The standard library is the `Zevic` package. Its modules are:
 
 `Async` `BigInt` `Bytes` `Chars` `Cli` `Console` `Convert` `Csv` `DateTime` `Deflate` `Digest` `Encoding` `Env` `Fs` `Gzip` `Http` `Json` `Log` `Math` `Net` `Path` `Process` `Random` `Regex` `Tar` `Test` `Text` `Thread` `Time` `Toml` `Zip` `Zlib`
 
+`Http` is an HTTP server and client that needs no dependencies and has no TLS. For HTTPS use the [curl package](https://github.com/zevic-lang/curl) (`zevpm get zevic-lang/curl`), which builds on libcurl.
+
 ## Status
 
 Version {{ site.version }}. Types, `struct` / `class` / `enum`, union types, `interface`, generics, closures, `defer`, the GC, C interop, `test` blocks, `async` / `await`, HTTP (no TLS), `zevpm` and the standard library all work. The language is still in development, so the specification will keep changing. See the [releases](/en/releases/) and the [language specification](https://github.com/zevic-lang/zevic/blob/main/docs/spec/zevic-spec.md).
