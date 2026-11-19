@@ -1,3 +1,14 @@
+- version: 0.4.7
+  date: 2026-11-19
+  summary: zevpm の [native] に lib_dirs・include_dirs・defines。Http の https エラーが Curl パッケージを案内します。
+  changes:
+  - <code>zevic.toml</code> の <code>[native]</code> で、仕様書どおり <code>lib_dirs</code>、<code>include_dirs</code>、<code>defines</code> が書けます（これまでは <code>libs</code> だけでした）。<code>-L</code>、<code>-I</code>、<code>-D</code> になり、相対パスはそのパッケージを基準に、絶対パスはそのまま使います。依存パッケージの指定も使われます
+  - <code>Zevic.Http</code> に <code>https://</code> を渡したときのエラーが、<code>Curl</code> パッケージ（<code>zevpm get zevic-lang/curl</code>）を案内します。<code>Http</code> は依存なしの HTTP 用、HTTPS は <code>Curl</code> と、役割を文書にまとめました
+  release: true
+  summary_en: zevpm reads lib_dirs, include_dirs and defines in [native]. The https error of Http points to the Curl package.
+  changes_en:
+  - '<code>[native]</code> in <code>zevic.toml</code> accepts <code>lib_dirs</code>, <code>include_dirs</code> and <code>defines</code>, as the specification says (before, only <code>libs</code>). They become <code>-L</code>, <code>-I</code> and <code>-D</code>; a relative directory is relative to the package, an absolute one is used as it is, and the keys of dependencies are used too'
+  - An <code>https://</code> address given to <code>Zevic.Http</code> still fails, but the error now points to the <code>Curl</code> package (<code>zevpm get zevic-lang/curl</code>). The documentation says what each is for: <code>Http</code> for plain HTTP without dependencies, <code>Curl</code> for HTTPS
 - version: 0.4.6
   date: 2026-11-19
   summary: エラーメッセージの改善（名前の候補、null、return 抜けの位置）。examples を個別のパッケージに。
