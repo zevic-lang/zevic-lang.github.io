@@ -249,7 +249,7 @@ zevfmt -w .      # コードを整形
 
 ## 8. 次のステップ {#s8}
 
-- `struct` / `class` / `interface` — [examples の 05_shapes](https://github.com/zevic-lang/zevic/blob/main/examples/05_shapes.zev)
+- `struct` / `class` / `interface` — [examples の 05_shapes](https://github.com/zevic-lang/zevic/blob/main/examples/05_shapes/src/Main.zev)
 - ファイル・外部プログラム・JSON・HTTP — [examples](https://github.com/zevic-lang/zevic/tree/main/examples)
 - C との連携 — [06_c_interop](https://github.com/zevic-lang/zevic/tree/main/examples/06_c_interop)
 - [言語仕様](https://github.com/zevic-lang/zevic/blob/main/docs/spec/zevic-spec.md)
