@@ -18,7 +18,7 @@ alt: /en/releases/
 <tr><td>C 連携</td><td><code>extern "C"</code> / <code>export "C"</code>、ヘッダーの生成、C / C++ のソースの同時ビルド</td></tr>
 <tr><td>標準ライブラリ</td><td>30 以上のモジュール。<code>Http</code> は TLS なし（HTTPS は <a href="https://github.com/zevic-lang/curl">curl</a> パッケージ）</td></tr>
 <tr><td>ツール</td><td><code>zevpm</code>（パッケージ・ビルド・テスト）、<code>zevfmt</code>（整形）</td></tr>
-<tr><td>対応 OS</td><td>Linux（x64）、macOS（arm64）、Windows（x64）。Termux はソースからビルド</td></tr>
+<tr><td>対応 OS</td><td>Linux・macOS・Windows（それぞれ x64 と arm64）。<code>--target</code> でほかの OS 向けにもビルドできます。Termux はソースからビルド</td></tr>
 <tr><td>既知の制限</td><td>DateTime のタイムゾーンは固定オフセットのみ。TOML の日時はテキストのまま。正規表現のフラグはパターン全体に効く</td></tr>
 </tbody>
 </table>
@@ -44,10 +44,10 @@ alt: /en/releases/
 <table>
 <thead><tr><th>ファイル</th><th>用途</th></tr></thead>
 <tbody>
-<tr><td><code>zevic-&lt;版&gt;-linux-x64.tar.gz</code></td><td>Linux（x64）</td></tr>
-<tr><td><code>zevic_&lt;版&gt;_amd64.deb</code></td><td>Debian / Ubuntu（amd64）</td></tr>
-<tr><td><code>zevic-&lt;版&gt;-macos-arm64.pkg</code> / <code>.tar.gz</code></td><td>macOS（Apple Silicon）</td></tr>
-<tr><td><code>zevic-&lt;版&gt;-windows-x64-setup.exe</code> / <code>.zip</code></td><td>Windows（x64）</td></tr>
+<tr><td><code>zevic-&lt;版&gt;-linux-x64.tar.gz</code> / <code>linux-arm64</code></td><td>Linux（x64 / arm64）</td></tr>
+<tr><td><code>zevic_&lt;版&gt;_amd64.deb</code> / <code>arm64.deb</code></td><td>Debian / Ubuntu（amd64 / arm64）</td></tr>
+<tr><td><code>zevic-&lt;版&gt;-macos-arm64.pkg</code> / <code>macos-x64.pkg</code>（<code>.tar.gz</code> もあり）</td><td>macOS（Apple Silicon / Intel）</td></tr>
+<tr><td><code>zevic-&lt;版&gt;-windows-x64-setup.exe</code> / <code>windows-arm64</code>（<code>.zip</code> もあり）</td><td>Windows（x64 / arm64）</td></tr>
 <tr><td><code>install.sh</code> / <code>install.ps1</code></td><td>展開済みのアーカイブ向けインストーラー</td></tr>
 <tr><td><code>SHA256SUMS.txt</code></td><td>チェックサム</td></tr>
 </tbody>

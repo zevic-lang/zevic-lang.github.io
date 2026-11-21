@@ -22,15 +22,34 @@ sudo apt update && sudo apt install zevic
 winget install zevic-lang.Zevic
 ```
 
-LLVM（`LLVM.LLVM`）も一緒に入ります。リンクには Visual Studio Build Tools が必要です。`zevic-{{ site.version }}-windows-x64-setup.exe`（インストーラー）や `.zip` も[リリース](https://github.com/zevic-lang/zevic/releases/latest)にあります。
+LLVM（`LLVM.LLVM`）も一緒に入ります。リンクには Visual Studio Build Tools が必要です。`zevic-{{ site.version }}-windows-x64-setup.exe`（インストーラー）や `.zip` も[リリース](https://github.com/zevic-lang/zevic/releases/latest)にあります。Windows on Arm には `windows-arm64` の `setup.exe` と `.zip` があります。
 
-## macOS（Apple Silicon）
+インストーラーには、チェックを外した状態の「Install Zig」があります（[別の OS 向けにビルドする](#別の-os-向けにビルドする)）。サイレントインストールでは `/TASKS="zig"` で選べます。
 
-先に `brew install llvm` を実行し、[リリース](https://github.com/zevic-lang/zevic/releases/latest)から `zevic-{{ site.version }}-macos-arm64.pkg` を入れるか、`install.sh` を使います。
+## macOS
+
+先に `brew install llvm` を実行し、[リリース](https://github.com/zevic-lang/zevic/releases/latest)から `zevic-{{ site.version }}-macos-arm64.pkg`（Apple Silicon）または `zevic-{{ site.version }}-macos-x64.pkg`（Intel）を入れるか、`install.sh` を使います。
 
 ## Linux（tar.gz）
 
-`zevic-{{ site.version }}-linux-x64.tar.gz` を展開し、`bin` を `PATH` に通します。clang は別に入れてください（`sudo apt install clang` など）。
+`zevic-{{ site.version }}-linux-x64.tar.gz`（Arm 版は `linux-arm64`）を展開し、`bin` を `PATH` に通します。clang は別に入れてください（`sudo apt install clang` など）。展開したディレクトリの `install.sh` で、`~/.local` に入れることもできます。
+
+## 別の OS 向けにビルドする
+
+`--target` で、別の OS・CPU 向けの実行ファイルを作れます。名前は `linux-x64`、`linux-arm64`、`macos-x64`、`macos-arm64`、`windows-x64`、`windows-arm64` です。
+
+```sh
+zevic --target windows-x64 hello.zev -o hello.exe
+zevpm build --target linux-arm64     # build/linux-arm64/ に出力
+```
+
+その OS の C ヘッダーとライブラリが必要です。いちばん簡単なのは [Zig](https://ziglang.org/) で、Linux・Windows・macOS の分を持っています。インストール時に選べます。
+
+```sh
+sh install.sh --with-zig             # Windows: .\install.ps1 -WithZig
+```
+
+Zig は SHA-256 を確かめてから `zevic` の隣に入ります。`--target` を付けたときに自動で使われ、`ZEVIC_CLANG` に `zig` のパスを指定しても使えます。Windows 向けは MinGW の ABI になります。作ったプログラムはその OS でなければ動かないので、`zevpm run` と `--test` は `--target` と一緒に使えません。
 
 ## Termux（Android）
 
