@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% assign t = site.data.i18n[page.lang] %}
+<div class="wrap">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+  <div id="pg" class="pg" data-base="{{ '/assets/playground/' | relative_url }}" data-lang="{{ page.lang }}">
+    <div class="pg-bar">
+      <label class="pg-ex">{{ page.l_examples }}
+        <select id="pg-examples"></select></label>
+      <button id="pg-run" class="pg-run" type="button" disabled>{{ page.l_run }}</button>
+      <button id="pg-share" type="button">{{ page.l_share }}</button>
+      <span id="pg-status" class="pg-status muted" role="status">{{ page.l_loading }}</span>
+    </div>
+    <div class="pg-panes">
+      <div class="pg-pane">
+        <div class="pg-title">{{ page.l_source }} <span class="muted">Ctrl/⌘ + Enter</span></div>
+        <textarea id="pg-src" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="{{ page.l_source }}"></textarea>
+      </div>
+      <div class="pg-pane">
+        <div class="pg-title">{{ page.l_output }}</div>
+        <pre id="pg-out" class="pg-out" aria-live="polite"></pre>
+      </div>
+    </div>
+  </div>
+  <div class="prose pg-notes">{{ content }}</div>
+</div>
+<link rel="stylesheet" href="{{ '/assets/css/playground.css' | relative_url }}">
+<script src="{{ '/assets/js/playground.js' | relative_url }}" defer></script>
