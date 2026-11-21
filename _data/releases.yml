@@ -1,3 +1,20 @@
+- version: 0.4.8
+  date: 2026-11-21
+  summary: 別の OS 向けのビルド（--target）、Zig の選択インストール、arm64 と Intel Mac のリリース、ブラウザで動くプレイグラウンド。
+  changes:
+  - <code>zevic --target &lt;名前&gt;</code> と <code>zevpm build --target &lt;名前&gt;</code> で、別の OS・CPU 向けの実行ファイルを作れます（<code>linux-x64</code>、<code>linux-arm64</code>、<code>macos-x64</code>、<code>macos-arm64</code>、<code>windows-x64</code>、<code>windows-arm64</code>）。<code>--sysroot</code> も使えます。<code>zevpm</code> の出力は <code>build/&lt;名前&gt;/</code> です
+  - C のコンパイラとして <a href="https://ziglang.org/">Zig</a>（<code>zig cc</code>）を使えます。<code>install.sh --with-zig</code>、<code>install.ps1 -WithZig</code>、Windows のセットアップの「Install Zig」で、SHA-256 を確かめて入れられます（既定は入れません）。<code>--target</code> を付けると自動で使われます
+  - リリースに Linux arm64（<code>.deb</code> も）、macOS Intel、Windows on Arm が加わりました
+  - Windows で <code>zevic --lib</code> が <code>llvm-lib</code> を先に使うようになりました（Windows on Arm でライブラリがリンクできなかった問題の修正）
+  - ランタイムが WebAssembly 向けにビルドできるようになり、<a href="/playground/">プレイグラウンド</a>で Zevic のコードをブラウザの中で実行できます
+  release: true
+  summary_en: Builds for other systems (--target), Zig as an optional install, arm64 and Intel Mac releases, and a playground that runs in the browser.
+  changes_en:
+  - '<code>zevic --target &lt;name&gt;</code> and <code>zevpm build --target &lt;name&gt;</code> build for another OS and CPU (<code>linux-x64</code>, <code>linux-arm64</code>, <code>macos-x64</code>, <code>macos-arm64</code>, <code>windows-x64</code>, <code>windows-arm64</code>). <code>--sysroot</code> works too. <code>zevpm</code> writes to <code>build/&lt;name&gt;/</code>'
+  - '<a href="https://ziglang.org/">Zig</a> (<code>zig cc</code>) works as the C compiler. <code>install.sh --with-zig</code>, <code>install.ps1 -WithZig</code> and the "Install Zig" task of the Windows setup install it, checked against its SHA-256 (off by default). It is used automatically when you pass <code>--target</code>'
+  - Releases now include Linux arm64 (with a <code>.deb</code>), macOS Intel and Windows on Arm
+  - On Windows, <code>zevic --lib</code> tries <code>llvm-lib</code> first (this fixes a static library that could not be linked on Windows on Arm)
+  - The runtime builds for WebAssembly, and the <a href="/en/playground/">playground</a> runs Zevic code inside your browser'
 - version: 0.4.7
   date: 2026-11-19
   summary: zevpm の [native] に lib_dirs・include_dirs・defines。Http の https エラーが Curl パッケージを案内します。
