@@ -20,4 +20,5 @@ Limits:
 - No files, processes, networking or standard input.
 - There are no threads, so an `async` task runs to the end as soon as it is started. A program whose tasks wait for each other (a channel receive, for example) stops.
 - Running is slower than native, and a program that recurses too deeply (more than a few thousand levels) stops with "stack overflow".
+- Memory is never freed (there is no GC), so a program that keeps allocating can run out of memory and stop.
 - No C interop (`extern "C"`).
