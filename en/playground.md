@@ -13,4 +13,11 @@ l_output: Output
 ---
 The code is compiled and run inside your browser. "Share link" puts the code after the `#` of the URL, so nothing is stored on a server.
 
-The parts of the standard library that a browser cannot offer (files, processes, networking) do not work here.
+What runs here is the real `zevic` compiler (built for WebAssembly) and its standard library. Compiling takes a few tens of milliseconds.
+
+Limits:
+
+- No files, processes, networking or standard input.
+- There are no threads, so an `async` task runs to the end as soon as it is started. A program whose tasks wait for each other (a channel receive, for example) stops.
+- Running is slower than native, and a program that recurses too deeply (more than a few thousand levels) stops with "stack overflow".
+- No C interop (`extern "C"`).
