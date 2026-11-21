@@ -22,15 +22,34 @@ To install a `.deb` directly, use `zevic_{{ site.version }}_amd64.deb` from the 
 winget install zevic-lang.Zevic
 ```
 
-This also installs LLVM (`LLVM.LLVM`). The Visual Studio Build Tools are needed for linking. `zevic-{{ site.version }}-windows-x64-setup.exe` (an installer) and a `.zip` are on the [releases](https://github.com/zevic-lang/zevic/releases/latest) page too.
+This also installs LLVM (`LLVM.LLVM`). The Visual Studio Build Tools are needed for linking. `zevic-{{ site.version }}-windows-x64-setup.exe` (an installer) and a `.zip` are on the [releases](https://github.com/zevic-lang/zevic/releases/latest) page too. For Windows on Arm there is a `windows-arm64` `setup.exe` and `.zip`.
 
-## macOS (Apple Silicon)
+The installer has an unchecked "Install Zig" option (see [Building for another system](#building-for-another-system)). A silent install selects it with `/TASKS="zig"`.
 
-Run `brew install llvm` first, then install `zevic-{{ site.version }}-macos-arm64.pkg` from the [releases](https://github.com/zevic-lang/zevic/releases/latest), or use `install.sh`.
+## macOS
+
+Run `brew install llvm` first, then install `zevic-{{ site.version }}-macos-arm64.pkg` (Apple Silicon) or `zevic-{{ site.version }}-macos-x64.pkg` (Intel) from the [releases](https://github.com/zevic-lang/zevic/releases/latest), or use `install.sh`.
 
 ## Linux (tar.gz)
 
-Extract `zevic-{{ site.version }}-linux-x64.tar.gz` and put its `bin` directory on your `PATH`. Install clang separately (for example `sudo apt install clang`).
+Extract `zevic-{{ site.version }}-linux-x64.tar.gz` (`linux-arm64` for Arm) and put its `bin` directory on your `PATH`. Install clang separately (for example `sudo apt install clang`). `install.sh` in the extracted directory installs to `~/.local` if you prefer.
+
+## Building for another system
+
+`--target` builds an executable for another OS and CPU. The names are `linux-x64`, `linux-arm64`, `macos-x64`, `macos-arm64`, `windows-x64` and `windows-arm64`.
+
+```sh
+zevic --target windows-x64 hello.zev -o hello.exe
+zevpm build --target linux-arm64     # writes to build/linux-arm64/
+```
+
+You need the C headers and libraries of that system. The easiest way is [Zig](https://ziglang.org/), which carries them for Linux, Windows and macOS. You can choose it at install time:
+
+```sh
+sh install.sh --with-zig             # Windows: .\install.ps1 -WithZig
+```
+
+Zig is checked against its SHA-256 and put next to `zevic`. It is used automatically when you pass `--target`, and also when `ZEVIC_CLANG` points to `zig`. Windows targets use the MinGW ABI. The program only runs on that system, so `zevpm run` and `--test` cannot be combined with `--target`.
 
 ## Termux (Android)
 

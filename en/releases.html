@@ -18,7 +18,7 @@ lead: What changed in each version, and where development stands. Downloads are 
 <tr><td>C interop</td><td><code>extern "C"</code> / <code>export "C"</code>, header generation, building C / C++ sources together</td></tr>
 <tr><td>Standard library</td><td>Over 30 modules. <code>Http</code> has no TLS (HTTPS is the <a href="https://github.com/zevic-lang/curl">curl</a> package)</td></tr>
 <tr><td>Tools</td><td><code>zevpm</code> (packages, builds, tests) and <code>zevfmt</code> (formatter)</td></tr>
-<tr><td>Platforms</td><td>Linux (x64), macOS (arm64), Windows (x64). Termux: build from source</td></tr>
+<tr><td>Platforms</td><td>Linux, macOS and Windows (x64 and arm64 each); <code>--target</code> also builds for the other systems. Termux: build from source</td></tr>
 <tr><td>Known limits</td><td>DateTime supports only fixed UTC offsets as time zones. TOML dates and times stay as text. Regex flags apply to the whole pattern</td></tr>
 </tbody>
 </table>
@@ -44,10 +44,10 @@ lead: What changed in each version, and where development stands. Downloads are 
 <table>
 <thead><tr><th>File</th><th>For</th></tr></thead>
 <tbody>
-<tr><td><code>zevic-&lt;version&gt;-linux-x64.tar.gz</code></td><td>Linux (x64)</td></tr>
-<tr><td><code>zevic_&lt;version&gt;_amd64.deb</code></td><td>Debian / Ubuntu (amd64)</td></tr>
-<tr><td><code>zevic-&lt;version&gt;-macos-arm64.pkg</code> / <code>.tar.gz</code></td><td>macOS (Apple Silicon)</td></tr>
-<tr><td><code>zevic-&lt;version&gt;-windows-x64-setup.exe</code> / <code>.zip</code></td><td>Windows (x64)</td></tr>
+<tr><td><code>zevic-&lt;version&gt;-linux-x64.tar.gz</code> / <code>linux-arm64</code></td><td>Linux (x64 / arm64)</td></tr>
+<tr><td><code>zevic_&lt;version&gt;_amd64.deb</code> / <code>arm64.deb</code></td><td>Debian / Ubuntu (amd64 / arm64)</td></tr>
+<tr><td><code>zevic-&lt;version&gt;-macos-arm64.pkg</code> / <code>macos-x64.pkg</code> (and <code>.tar.gz</code>)</td><td>macOS (Apple Silicon / Intel)</td></tr>
+<tr><td><code>zevic-&lt;version&gt;-windows-x64-setup.exe</code> / <code>windows-arm64</code> (and <code>.zip</code>)</td><td>Windows (x64 / arm64)</td></tr>
 <tr><td><code>install.sh</code> / <code>install.ps1</code></td><td>Installers for an extracted archive</td></tr>
 <tr><td><code>SHA256SUMS.txt</code></td><td>Checksums</td></tr>
 </tbody>
