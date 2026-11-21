@@ -1,0 +1,17 @@
+[
+ {
+  "id": "01_hello",
+  "title": "Hello, World!",
+  "source": "module Main\n\nimport Zevic.Console\n\nfn Main() {\n    Console.Println(\"Hello, World!\")\n}\n"
+ },
+ {
+  "id": "02_fizzbuzz",
+  "title": "FizzBuzz",
+  "source": "module Main\n\nimport Zevic.Console\n\nfn FizzBuzz(n: I32) -> String {\n    if (n % 15 == 0) {\n        \"FizzBuzz\"\n    } else if (n % 3 == 0) {\n        \"Fizz\"\n    } else if (n % 5 == 0) {\n        \"Buzz\"\n    } else {\n        \"${n}\"\n    }\n}\n\nfn Main() {\n    let last: I32 = 20\n    for (i in 1..=last) {\n        Console.Println(FizzBuzz(i))\n    }\n}\n"
+ },
+ {
+  "id": "03_factorial",
+  "title": "階乗と素数 / Factorial and primes",
+  "source": "module Main\n\nimport Zevic.Console\n\nfn Factorial(n: I64) -> I64 {\n    if (n <= 1) { return 1 }\n    n * Factorial(n - 1)\n}\n\nfn IsPrime(n: I32) -> Bool {\n    if (n < 2) { return false }\n    mut i: I32 = 2\n    while (i * i <= n) {\n        if (n % i == 0) { return false }\n        i += 1\n    }\n    true\n}\n\nfn Main() {\n    for (n in 0..=10) {\n        Console.Printf(\"%2d! = %d\\n\", n, Factorial(n))\n    }\n    mut count: I32 = 0\n    let limit: I32 = 50\n    for (n in 1..limit) {\n        if (IsPrime(n)) {\n            Console.Printf(\"%d \", n)\n            count += 1\n        }\n    }\n    Console.Println(\"\")\n    Console.Println(\"primes below 50: ${count}\")\n    let x: F64 = 2.5\n    Console.Printf(\"%.3f %s %c\\n\", x * 2.0, \"str\", 'z')\n}\n"
+ }
+]

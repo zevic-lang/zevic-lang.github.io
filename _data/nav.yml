@@ -2,6 +2,7 @@ ja:
   - { title: 概要, url: /about/ }
   - { title: インストール, url: /install/ }
   - { title: 入門, url: /start/ }
+  - { title: プレイグラウンド, url: /playground/ }
   - { title: 他言語から, url: /from-other-languages/ }
   - { title: リリース, url: /releases/ }
   - { title: ブログ, url: /blog/ }
@@ -10,6 +11,7 @@ en:
   - { title: About, url: /en/about/ }
   - { title: Install, url: /en/install/ }
   - { title: Tutorial, url: /en/start/ }
+  - { title: Playground, url: /en/playground/ }
   - { title: From other languages, url: /en/from-other-languages/ }
   - { title: Releases, url: /en/releases/ }
   - { title: Blog, url: /en/blog/ }
