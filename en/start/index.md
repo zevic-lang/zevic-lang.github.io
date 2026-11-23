@@ -251,6 +251,7 @@ zevfmt -w .      # format the code
 
 - `struct` / `class` / `interface`: [05_shapes in the examples](https://github.com/zevic-lang/zevic/blob/main/examples/05_shapes/src/Main.zev)
 - Files, external programs, JSON and HTTP: [examples](https://github.com/zevic-lang/zevic/tree/main/examples)
+- Manual memory: [Manual memory and unsafe](/en/unsafe/) (from the next release)
 - Working with C: [06_c_interop](https://github.com/zevic-lang/zevic/tree/main/examples/06_c_interop)
 - [The language specification](https://github.com/zevic-lang/zevic/blob/main/docs/spec/zevic-spec.md)
 - If you know other languages, see [From other languages](/en/from-other-languages/) too.
