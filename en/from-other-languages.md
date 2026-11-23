@@ -31,8 +31,8 @@ module Main
 import Zevic.Console
 
 struct Point {
-    X: I32
-    Y: I32
+    mut X: I32
+    mut Y: I32
     fn Init(x: I32, y: I32) { this.X = x; this.Y = y }
     fn Dist2() -> I32 { this.X * this.X + this.Y * this.Y }
 }
