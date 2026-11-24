@@ -1,3 +1,20 @@
+- version: 0.5.0
+  date: 2026-11-24
+  summary: フィールドを let / mut で宣言（破壊的変更）、unsafe と手動メモリ、Printf の %{型}、予約語の追加、標準ライブラリの整理。
+  changes:
+  - 'クラスと構造体のフィールドを、変数と同じ <code>let</code> / <code>mut</code> で宣言します（<code>let name: String</code>、<code>mut count: I64 = 0</code>、<code>static let Limit: I64 = 10</code>）。<code>let</code> のフィールドは <code>Init</code> の中でだけ代入できます。<strong>破壊的変更:</strong> 旧書き方 <code>name: Type</code> はエラーです。<code>mut name: Type</code> に直せば同じ意味になります'
+  - '<code>unsafe { ... }</code> ブロックと <code>unsafe fn</code>、手動メモリの <code>Zevic.Unsafe</code>（<code>Alloc</code>・<code>Free</code>・<code>Cast</code>）、ポインタの <code>Read</code>・<code>Write</code>・<code>Offset</code>・<code>IsNull</code> が加わりました。手動のメモリに GC が管理する参照（<code>String</code> やクラスなど）は置けません。<a href="/unsafe/">解説ページ</a>があります'
+  - '<code>Printf</code>・<code>Eprintf</code>・<code>Text.Format</code> で <code>%{I32}</code>、<code>%.2{F64}</code>、<code>%{String}</code>、<code>%{Bool}</code> のように型を書けます。<code>%d</code> などと同じ書式に混ぜられます'
+  - '<strong>破壊的変更:</strong> <code>union</code>・<code>volatile</code>・<code>pub</code>・<code>try</code> が将来のために予約され、名前に使えなくなりました（バッククォートで囲めば使えます）'
+  - '<strong>破壊的変更:</strong> 標準ライブラリで <code>Env.OS()</code> が <code>Env.Os()</code>、<code>DateTime.Nano()</code> が <code>DateTime.Nanosecond()</code> になりました。<code>Regex</code>・<code>Toml</code>・<code>Json</code>・<code>DateTime</code> の内部の型は非公開になりました'
+  release: true
+  summary_en: Fields are declared with let and mut (breaking), unsafe and manual memory, %{Type} in Printf, more reserved words, and a clean-up of the standard library.
+  changes_en:
+  - 'Fields of a class or a struct are declared with <code>let</code> and <code>mut</code>, like variables (<code>let name: String</code>, <code>mut count: I64 = 0</code>, <code>static let Limit: I64 = 10</code>). A <code>let</code> field can be set only in <code>Init</code>. <strong>Breaking:</strong> the old form <code>name: Type</code> is an error; <code>mut name: Type</code> means the same'
+  - '<code>unsafe { ... }</code> blocks and <code>unsafe fn</code>, the manual memory of <code>Zevic.Unsafe</code> (<code>Alloc</code>, <code>Free</code>, <code>Cast</code>), and the pointer methods <code>Read</code>, <code>Write</code>, <code>Offset</code> and <code>IsNull</code>. Manual memory cannot hold references the GC manages (<code>String</code>, classes and so on). There is a <a href="/en/unsafe/">guide</a>'
+  - '<code>Printf</code>, <code>Eprintf</code> and <code>Text.Format</code> accept types such as <code>%{I32}</code>, <code>%.2{F64}</code>, <code>%{String}</code> and <code>%{Bool}</code>, mixed with <code>%d</code> and the others in one format'
+  - '<strong>Breaking:</strong> <code>union</code>, <code>volatile</code>, <code>pub</code> and <code>try</code> are reserved for the future and cannot be used as names (backquotes still work)'
+  - '<strong>Breaking:</strong> in the standard library, <code>Env.OS()</code> is <code>Env.Os()</code> and <code>DateTime.Nano()</code> is <code>DateTime.Nanosecond()</code>. The internal types of <code>Regex</code>, <code>Toml</code>, <code>Json</code> and <code>DateTime</code> are private now'
 - version: 0.4.8
   date: 2026-11-21
   summary: 別の OS 向けのビルド（--target）、Zig の選択インストール、arm64 と Intel Mac のリリース、ブラウザで動くプレイグラウンド。
