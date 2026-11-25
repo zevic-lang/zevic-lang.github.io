@@ -4,7 +4,7 @@ permalink: /en/unsafe/
 alt: /unsafe/
 lead: Zevic's memory is normally managed by the GC. This is for the times you want to allocate and give back memory yourself, outside it. Every piece of code here was compiled and run to check it.
 ---
-> This feature is in the development version (main) and is not in 0.4.8. It will be available from the next release.
+> This feature is available from 0.5.0.
 
 <div class="toc" markdown="1">
 1. [When to use it](#u1)
