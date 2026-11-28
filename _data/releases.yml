@@ -1,3 +1,28 @@
+- version: 0.6.0
+  date: 2026-11-28
+  summary: C との境目をなくす import C と zevic bind（構造体の値渡しも C のコードなし）、OS を書くための --freestanding、Http をパッケージへ分離（破壊的変更）。
+  changes:
+  - '<code>import C "sqlite3.h" as Sq strip "sqlite3_"</code>: コンパイル時に clang がヘッダを読み、関数・構造体・<code>enum</code>・<code>#define</code> の定数が使えます。C のコードは要りません。<a href="/c/">解説ページ</a>があります'
+  - '<code>zevic bind ヘッダ.h</code>: 同じ変換の結果を、手で直せる Zevic のモジュールとして書き出します。束縛できなかったものは、理由つきで末尾に一覧にします'
+  - 'C の関数が構造体を<strong>値で</strong>受け取る・返す場合は、コンパイラが C のシムを自動で書いてコンパイルします。raylib の <code>Vector2Add</code> や <code>ClearBackground(Color)</code> が、C を書かずに使えます。コールバックと値渡しの構造体を同時に取る関数と、可変長引数の関数は、まだ束縛できません'
+  - 'コールバックの引数に <code>Null</code> を渡せます。<code>Unsafe.CallbackAt&lt;F&gt;(n)</code> は、番号が意味を持つ関数ポインタ（sqlite の <code>SQLITE_TRANSIENT</code>、<code>SIG_IGN</code>）を C に渡すためのものです。名前が大文字で始まる <code>extern</code> 関数は、ほかのモジュールに公開されます'
+  - '<code>zevic --freestanding</code>: ランタイムも GC も標準ライブラリもリンクせずにビルドします。<code>-T</code>、<code>--entry</code>、<code>--cflag</code>、<code>--ldflag</code>、<code>.S</code> / <code>.s</code> / <code>.c</code> の入力に対応し、ランタイムが要るコードはコンパイルエラーです。<code>zevic.toml</code> の <code>[freestanding]</code> でも指定できます。<code>examples/hello-os</code> は、RISC-V で Hello, World! を表示するカーネルです。<a href="/os/">解説ページ</a>があります'
+  - 'メモリマップ I/O のために、<code>Unsafe.At&lt;T&gt;(address)</code>、<code>p.Address()</code>、<code>p.ReadVolatile(i)</code>、<code>p.WriteVolatile(i, v)</code> が加わりました'
+  - '<strong>破壊的変更:</strong> 標準ライブラリから <code>Zevic.Http</code> がなくなりました。クライアントは <a href="https://github.com/zevic-lang/curl">curl パッケージ</a>（<code>Curl.Get</code>、<code>Curl.Request</code>）、サーバーは <a href="https://github.com/zevic-lang/httpd">httpd パッケージ</a>です。<code>Zevic.Net</code>（TCP・UDP）は残ります'
+  - '<code>Net.TcpListener.Shutdown()</code> で、別のタスクで待っている <code>Accept</code> をエラーで返させられます'
+  - '<a href="https://github.com/zevic-lang/sqlite">sqlite パッケージ</a>は <code>import C</code> に移り、C のコードが 0 行になりました'
+  release: true
+  summary_en: import C and zevic bind remove the border with C (structs by value too, with no C code), --freestanding for writing an OS, and Http moves into packages (breaking).
+  changes_en:
+  - '<code>import C "sqlite3.h" as Sq strip "sqlite3_"</code>: clang reads the header while compiling, and the functions, structs, <code>enum</code>s and <code>#define</code> constants are there to use. No C code is needed. There is a <a href="/en/c/">guide</a>'
+  - '<code>zevic bind header.h</code>: writes the result of the same conversion as a Zevic module you can edit. What could not be bound is listed at the end, with the reason'
+  - 'When a C function takes or returns a struct <strong>by value</strong>, the compiler writes and compiles a C shim by itself. raylib''s <code>Vector2Add</code> and <code>ClearBackground(Color)</code> can be used without writing C. A function that takes a callback and a struct by value together, and variadic functions, cannot be bound yet'
+  - '<code>Null</code> can be passed for a callback parameter. <code>Unsafe.CallbackAt&lt;F&gt;(n)</code> is for passing C the function pointers whose number has a meaning (sqlite''s <code>SQLITE_TRANSIENT</code>, <code>SIG_IGN</code>). An <code>extern</code> function whose name starts with a capital letter is public to other modules'
+  - '<code>zevic --freestanding</code>: builds with no runtime, no GC and no standard library. It supports <code>-T</code>, <code>--entry</code>, <code>--cflag</code>, <code>--ldflag</code> and <code>.S</code> / <code>.s</code> / <code>.c</code> inputs, and code that needs the runtime is a compile error. A <code>[freestanding]</code> section in <code>zevic.toml</code> does the same. <code>examples/hello-os</code> is a kernel that prints Hello, World! on RISC-V. There is a <a href="/en/os/">guide</a>'
+  - 'For memory-mapped I/O: <code>Unsafe.At&lt;T&gt;(address)</code>, <code>p.Address()</code>, <code>p.ReadVolatile(i)</code> and <code>p.WriteVolatile(i, v)</code>'
+  - '<strong>Breaking:</strong> <code>Zevic.Http</code> is gone from the standard library. The client is the <a href="https://github.com/zevic-lang/curl">curl package</a> (<code>Curl.Get</code>, <code>Curl.Request</code>) and the server is the <a href="https://github.com/zevic-lang/httpd">httpd package</a>. <code>Zevic.Net</code> (TCP and UDP) stays'
+  - '<code>Net.TcpListener.Shutdown()</code> makes an <code>Accept</code> that waits in another task return an error'
+  - 'The <a href="https://github.com/zevic-lang/sqlite">sqlite package</a> moved to <code>import C</code> and has 0 lines of C'
 - version: 0.5.0
   date: 2026-11-24
   summary: フィールドを let / mut で宣言（破壊的変更）、unsafe と手動メモリ、Printf の %{型}、予約語の追加、標準ライブラリの整理。

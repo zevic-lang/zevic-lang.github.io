@@ -250,8 +250,10 @@ zevfmt -w .      # コードを整形
 ## 8. 次のステップ {#s8}
 
 - `struct` / `class` / `interface` — [examples の 05_shapes](https://github.com/zevic-lang/zevic/blob/main/examples/05_shapes/src/Main.zev)
-- ファイル・外部プログラム・JSON・HTTP — [examples](https://github.com/zevic-lang/zevic/tree/main/examples)
+- ファイル・外部プログラム・JSON — [examples](https://github.com/zevic-lang/zevic/tree/main/examples)
 - 手動メモリ — [手動メモリと unsafe](/unsafe/)（0.5.0 から）
+- C のライブラリ — [C と一緒に使う](/c/)（`import C`、0.6.0 から）
+- OS のカーネル — [OS を書く](/os/)（0.6.0 から）
 - C との連携 — [06_c_interop](https://github.com/zevic-lang/zevic/tree/main/examples/06_c_interop)
 - [言語仕様](https://github.com/zevic-lang/zevic/blob/main/docs/spec/zevic-spec.md)
 - 他の言語を知っている方は[他言語からの入門](/from-other-languages/)も。
