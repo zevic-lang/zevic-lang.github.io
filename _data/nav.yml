@@ -2,6 +2,8 @@ ja:
   - { title: 概要, url: /about/ }
   - { title: インストール, url: /install/ }
   - { title: 入門, url: /start/ }
+  - { title: C と一緒に使う, url: /c/ }
+  - { title: OS を書く, url: /os/ }
   - { title: プレイグラウンド, url: /playground/ }
   - { title: 他言語から, url: /from-other-languages/ }
   - { title: リリース, url: /releases/ }
@@ -11,6 +13,8 @@ en:
   - { title: About, url: /en/about/ }
   - { title: Install, url: /en/install/ }
   - { title: Tutorial, url: /en/start/ }
+  - { title: Using C, url: /en/c/ }
+  - { title: Writing an OS, url: /en/os/ }
   - { title: Playground, url: /en/playground/ }
   - { title: From other languages, url: /en/from-other-languages/ }
   - { title: Releases, url: /en/releases/ }

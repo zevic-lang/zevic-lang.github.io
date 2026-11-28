@@ -11,7 +11,7 @@ description: Zevic is a small, easy-to-write native language that uses C code as
     <div>
       <p class="ver">v{{ site.version }}</p>
       <h1>A small native language<br>that uses C code as it is.</h1>
-      <p class="lead">Zevic turns source code into LLVM IR and lets clang produce the machine code. Types are always written, failures come back as a <code>Result</code>, and a GC manages memory. The compiler is written in Zevic itself.</p>
+      <p class="lead">There is no border with C: <code>import C</code> a header and the C library is yours. Zevic turns source code into LLVM IR and lets clang produce the machine code. Types are always written, failures come back as a <code>Result</code>, and a GC manages memory. The compiler is written in Zevic itself.</p>
       <div class="btns">
         <a class="btn primary" href="/en/start/">Get started</a>
         <a class="btn" href="/en/install/">Install</a>
@@ -58,12 +58,13 @@ fn Main() {
   <div class="wrap">
     <h2>Features</h2>
     <ul class="facts">
-      <li><b>Uses C as it is</b><span>Call C functions with <code>extern "C"</code> and expose Zevic functions to C with <code>export "C"</code>. C sources build together with Zevic.</span></li>
+      <li><b>No border with C</b><span>One line, <code>import C "sqlite3.h"</code>, and the functions, structs and constants of a C header are yours, structs by value included, with no C code. <a href="/en/c/">More</a></span></li>
+      <li><b>Writes an OS too</b><span><code>--freestanding</code> builds with no runtime and no GC, so you can write a kernel. <a href="/en/os/">More</a></span></li>
       <li><b>Self-hosted</b><span>The compiler <code>zevic1</code> is written in Zevic and builds itself to the same LLVM IR (<code>make bootstrap</code>).</span></li>
       <li><b>Failures are types</b><span><code>Option</code> and <code>Result</code>, and the <code>?</code> operator. No exceptions, no null.</span></li>
       <li><b>Expressive types</b><span><code>struct</code> / <code>class</code> / <code>enum</code> / <code>interface</code>, generics, closures and union types <code>A | B</code>.</span></li>
       <li><b>Concurrency</b><span><code>async</code> / <code>await</code>, channels, OS threads (<code>Thread.Spawn</code>) and arbitrary-precision <code>BigInt</code>.</span></li>
-      <li><b>Standard library</b><span><code>Fs</code> <code>Json</code> <code>Http</code> <code>Net</code> <code>Regex</code> <code>Csv</code> <code>Toml</code> <code>DateTime</code> <code>Zip</code> <code>Cli</code> and more: over 30 modules.</span></li>
+      <li><b>Standard library</b><span><code>Fs</code> <code>Json</code> <code>Net</code> <code>Regex</code> <code>Csv</code> <code>Toml</code> <code>DateTime</code> <code>Zip</code> <code>Cli</code> and more: over 30 modules.</span></li>
       <li><b>Tools</b><span><code>zevpm</code> for packages and builds, <code>zevfmt</code> for formatting, and <code>test</code> blocks for testing.</span></li>
       <li><b>Garbage collected</b><span>The Boehm GC is bundled, so you can write code without thinking about memory management.</span></li>
     </ul>
