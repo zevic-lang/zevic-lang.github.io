@@ -104,12 +104,11 @@ Anything that needs the runtime is a **compile error**. You do not find out when
 
 | You can write | You cannot write |
 | --- | --- |
-| integers, floats, `Bool`, `let` / `mut`, `if` / `match` / `while` / `for` | `Array`, `Map`, classes, closures, `async` |
-| `struct`, `enum`, generics, `interface` | allocating values the GC manages |
+| numbers, `Bool`, `let` / `mut`, `struct`, generics | `Array`, `Map`, `class`, closures |
+| pointers, `unsafe`, `Zevic.Unsafe` | the modules of the standard library (`Fs`, `Console` and so on) |
 | string literals, and their `Len` and `ByteAt` | joining or interpolating strings (they need a heap) |
-| `unsafe`, `Unsafe.Alloc` and `Free`, the pointer's `Read` and `Write` | most of the standard library (`Fs`, `Console` and so on) |
 
-When you need memory, you handle a region you prepared yourself with [`Unsafe`](/en/unsafe/).
+When you need memory, you handle a region you set aside yourself, such as one the linker script reserves, through pointers (`Read` and `Write` of [`Unsafe`](/en/unsafe/)).
 
 ## 4. Reading and writing registers {#o4}
 
@@ -141,6 +140,6 @@ The keys are `target`, `linker_script`, `entry`, `cflags` and `ldflags`, and all
 
 ## 6. When something fails: zevic_panic {#o6}
 
-Zevic code can fail a run-time check, such as an index out of range or a division by zero. Normally it prints a message and exits, but an OS has nowhere to exit to.
+Zevic code can fail a run-time check, such as a division by zero. Normally it prints a message and exits, but an OS has nowhere to exit to.
 
 So when the code can fail, you must **write `export "C" fn zevic_panic(msg: *U8, len: CLongLong, file: *U8, line: CInt)` yourself**. Decide what is right for your system: print to the UART, halt, or reboot. If you do not write it, you find out at link time.
